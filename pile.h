@@ -28,7 +28,7 @@ typedef struct		s_file
 {
 	char			type; // file type
 	char const		*perms; // file perms
-	char			*iud; // file owners name
+	char			*uid; // file owners name
 	char			*gid; // file group name
 	int				size; // file size
 	char			*date; // file date of modification
@@ -44,6 +44,6 @@ int 			ft_file_size(off_t size);
 char			*ft_date(__darwin_time_t *time);
 char const		*ft_file_name(char const *s);
 t_file			*ft_new_list(t_file *list, t_hub e);
-void			ft_fill_list(t_file *elem, t_hub e);
+void			ft_fill_list(t_file *tmp, t_hub e);
 
 #endif

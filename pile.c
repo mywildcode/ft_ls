@@ -74,10 +74,10 @@ int 	ft_file_size(off_t size)
 
 char	*ft_date(__darwin_time_t *time)
 {
-	t_hub	e;
+	char	*date;
 
-	e.date = (char *)(ft_strsub(ctime(time), 4, 12));
-	return(e.date);
+	date = (char *)(ft_strsub(ctime(time), 4, 12));
+	return(date);
 }
 
 char const	*ft_file_name(char const *s)
@@ -88,24 +88,29 @@ char const	*ft_file_name(char const *s)
 t_file	*ft_new_list(t_file *list, t_hub e)
 {
 	t_file *elem;
+	t_file *tmp;
 
-	elem = (t_file *)malloc(sizeof(elem));
-	ft_fill_list(elem, e);
+	tmp = (t_file *)malloc(sizeof(tmp));
+	ft_fill_list(tmp, e);
+	elem = tmp;
+	free(tmp);
 	elem->next = list;
 	return(elem);
 }
 
-void	ft_fill_list(t_file *elem, t_hub e)
+void	ft_fill_list(t_file *tmp, t_hub e)
 {
-//	elem->perms = (char *)malloc(sizeof(elem->perms) * strlen(ft_perms(e.statbuf.st_mode)) + 1);
+	tmp->uid = (char *)malloc(sizeof(tmp->uid) * strlen(ft_owners_name(e.statbuf.st_uid)) + 1);
+	tmp->gid = (char *)malloc(sizeof(tmp->gid) * strlen(ft_group_name(e.statbuf.st_gid)) + 1);
+	tmp->name = (char *)malloc(sizeof(tmp->name) * strlen(ft_file_name(e.dp->d_name)) + 1);
 	stat(e.dp->d_name, &e.statbuf);
-//	elem->type = ft_type(e.statbuf.st_mode);
-	elem->perms = ft_perms(e.statbuf.st_mode);
-//	elem->iud = strdup(ft_owners_name(e.statbuf.st_uid));
-//	elem->gid = strdup(ft_group_name(e.statbuf.st_gid));
-//	elem->size = ft_file_size((intmax_t)e.statbuf.st_size);
-//	elem->date = strdup(ft_date(&e.statbuf.st_mtime));
-//	elem->name = strdup(ft_file_name(e.dp->d_name));
+//	tmp->type = ft_type(e.statbuf.st_mode);
+	tmp->perms = ft_perms(e.statbuf.st_mode);
+	tmp->uid = ft_owners_name(e.statbuf.st_uid);
+	tmp->gid = ft_group_name(e.statbuf.st_gid);
+//	tmp->size = ft_file_size((intmax_t)e.statbuf.st_size);
+//	tmp->date = strdup(ft_date(&e.statbuf.st_mtime));
+	tmp->name = ft_file_name(e.dp->d_name);
 }
 
 
