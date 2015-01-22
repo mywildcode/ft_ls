@@ -13,9 +13,9 @@ int		main(int argc, char **argv)
 	{
 		elem = ft_new_list(list, e);
 //		printf("%c", elem->type);
-		printf("%s ", elem->perms);
-		printf("%s ", elem->uid);
-		printf("%s ", elem->gid);
+//		printf("%s ", elem->perms);
+//		printf("%s ", elem->uid);
+//		printf("%s ", elem->gid);
 //		printf("%d ", elem->size);
 //		printf("%s ", elem->date);
 		printf("%s\n", elem->name);

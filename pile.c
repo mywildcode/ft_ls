@@ -100,17 +100,17 @@ t_file	*ft_new_list(t_file *list, t_hub e)
 
 void	ft_fill_list(t_file *tmp, t_hub e)
 {
-	tmp->uid = (char *)malloc(sizeof(tmp->uid) * strlen(ft_owners_name(e.statbuf.st_uid)) + 1);
-	tmp->gid = (char *)malloc(sizeof(tmp->gid) * strlen(ft_group_name(e.statbuf.st_gid)) + 1);
-	tmp->name = (char *)malloc(sizeof(tmp->name) * strlen(ft_file_name(e.dp->d_name)) + 1);
-	stat(e.dp->d_name, &e.statbuf);
+//	tmp->uid = (char *)malloc(sizeof(tmp->uid) * strlen(ft_owners_name(e.statbuf.st_uid)) + 1);
+//	tmp->gid = (char *)malloc(sizeof(tmp->gid) * strlen(ft_group_name(e.statbuf.st_gid)) + 1);
+//	tmp->name = (char *)malloc(sizeof(tmp->name) * strlen(ft_file_name(e.dp->d_name)) + 1);
+//	stat(e.dp->d_name, &e.statbuf);
 //	tmp->type = ft_type(e.statbuf.st_mode);
-	tmp->perms = ft_perms(e.statbuf.st_mode);
-	tmp->uid = ft_owners_name(e.statbuf.st_uid);
-	tmp->gid = ft_group_name(e.statbuf.st_gid);
+//	tmp->perms = ft_perms(e.statbuf.st_mode);
+//	tmp->uid = ft_owners_name(e.statbuf.st_uid);
+//	tmp->gid = ft_group_name(e.statbuf.st_gid);
 //	tmp->size = ft_file_size((intmax_t)e.statbuf.st_size);
 //	tmp->date = strdup(ft_date(&e.statbuf.st_mtime));
-	tmp->name = ft_file_name(e.dp->d_name);
+//	tmp->name = strdup(ft_file_name(e.dp->d_name));
 }
 
 
